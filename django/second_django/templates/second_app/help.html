@@ -1,11 +1,15 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>This is hello page</title>
+    <link rel="stylesheet" href='{% static "css/my_style.css" %}'>
 </head>
 <body>
 <p>This is a new page</p>
+<H1>Hi, thi is admin's image</H1>
+<img src='{% static "images/person.jpg" %}' alt="Uh oh, We can't find!">
 <ol>
     <li>Menu 1</li>
     <li>Menu 2</li>
