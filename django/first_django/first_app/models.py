@@ -1,3 +1,26 @@
 from django.db import models
 
 # Create your models here.
+
+class Topic(models.Model):
+    top_name = models.CharField(max_length=264, unique=True)#primary key
+    def __str__(self):
+        return self.top_name
+
+class Webpage(models.Model):
+    category = models.ForeignKey(Topic,
+                                 models.CASCADE)
+    name = models.CharField(max_length=264,
+                            unique=True)
+    url = models.URLField(unique=True)
+
+    def __str__(self):
+        return self.name
+
+class AccessRecord(models.Model):
+    name = models.ForeignKey(Webpage,
+                             models.CASCADE)
+    date = models.DateField()
+
+    def __str__(self):
+        return str(self.date)
