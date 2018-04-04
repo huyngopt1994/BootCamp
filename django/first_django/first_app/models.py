@@ -8,8 +8,8 @@ class Topic(models.Model):
         return self.top_name
 
 class Webpage(models.Model):
-    category = models.ForeignKey(Topic,
-                                 models.CASCADE)
+    topic = models.ForeignKey(Topic,
+                              models.CASCADE)
     name = models.CharField(max_length=264,
                             unique=True)
     url = models.URLField(unique=True)
