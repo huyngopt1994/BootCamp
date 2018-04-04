@@ -1,11 +1,34 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Firsr app</title>
+    <title>Django Guitar Page</title>
+    <link rel="stylesheet" href="{% static "first_app/css/mystyle.css" %}">
 </head>
 <body>
-<h1>Hello this is index.html</h1>
-{{ insert_me }}
+
+<h1>Hi, this is a picture of Django himself</h1>
+<h2>Here are you access records:</h2>
+<div class="djangotwo">
+    {% if access_records %}
+        <table>
+            <thead>
+                <th>Site name</th>
+                <th>Date Accessed</th>
+            </thead>
+
+    {%  for acc in access_records %}
+            <tr>
+                <td>{{ acc.name }}</td>
+                <td>{{ acc.date }}</td>
+            </tr>
+     {% endfor %}
+        </table>
+    {% else %}
+        <p>NO ACCESS RECORDS FOUND !</p>
+    {% endif %}
+</div>
+<img src="{% static "first_app/image/chiba.jpg" %}" alt="Uh No ,We missed this">
 </body>
 </html>
