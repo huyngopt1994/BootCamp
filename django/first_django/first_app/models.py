@@ -24,3 +24,10 @@ class AccessRecord(models.Model):
 
     def __str__(self):
         return str(self.date)
+
+class User(models.Model):
+    first_name = models.CharField(max_length=264)
+    last_name = models.CharField(max_length=264)
+    email = models.CharField(max_length=264,unique=True)
+    class Meta:
+        unique_together = ('first_name', 'last_name')
