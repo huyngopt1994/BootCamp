@@ -1,6 +1,12 @@
 from django import forms
 from django.core import validators
+from .models import User
 # Set up Form
+class NewUserForm(forms.ModelForm):
+    class Meta():
+        model = User
+        fields = '__all__'
+
 def check_for_z(value):
 	if value[0].lower() != 'z':
 		raise forms.ValidationError("NAME NEEDS TO START WITH Z")

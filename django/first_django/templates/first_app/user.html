@@ -4,15 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <title>This is user list</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
-<h1>Here are your users:</h1>
-    {% for user in user_list %}
-    <ol> User List
-        <li>{{ user.first_name }}</li>
-        <li>{{ user.last_name }}</li>
-        <li>{{ user.email }}</li>
-        </ol>
-    {% endfor %}
+<div class="container">
+        <h1>Go to /user to sign up here!</h1>
+    <form method="POST">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+</div>
+
 </body>
 </html>

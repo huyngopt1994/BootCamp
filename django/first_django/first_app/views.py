@@ -23,6 +23,16 @@ def form_name_view(request):
 	return render(request,'first_app/form_page.html',context={'form':form})
 
 def user(request):
-	user_list = User.objects.order_by('first_name')
-	user_list = {'user_list': user_list}
-	return render(request,'first_app/user.html', context= user_list)
+
+	form = forms.NewUserForm()
+	if request.method == "POST":
+		# some guy submit
+		form = forms.NewUserForm(request.POST)
+
+		if form.is_valid():
+			form.save(commit=True)
+			return index(request)
+		else:
+			print('ERROR FROM INVALID')
+
+	return render(request,'first_app/user.html',{'form':form})
